@@ -1,0 +1,41 @@
+{
+  "name": "react-query-example",
+  "version": "0.1.0",
+  "description": "TanStack React Query examples — typed hooks, caching, and mutations.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Viprasol Tech Private Limited",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Viprasol-Tech/react-query-example.git"
+  },
+  "homepage": "https://viprasol.com",
+  "keywords": [
+    "react-query",
+    "tanstack-query",
+    "react",
+    "data-fetching",
+    "typescript",
+    "hooks",
+    "caching"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "^5.59.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^16.0.1",
+    "@types/node": "^22.7.4",
+    "@types/react": "^18.3.11",
+    "@types/react-dom": "^18.3.0",
+    "jsdom": "^25.0.1",
+    "typescript": "^5.6.2",
+    "vitest": "^2.1.2"
+  }
+}
