@@ -13,7 +13,7 @@ export function useTodos(): UseQueryResult<Todo[], Error> {
   const api = useTodoApi();
 
   return useQuery<Todo[], Error>({
-    queryKey: queryKeys.todos,
+    queryKey: queryKeys.todos.list(),
     queryFn: () => api.getTodos(),
   });
 }

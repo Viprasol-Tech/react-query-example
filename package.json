@@ -1,6 +1,6 @@
 {
   "name": "react-query-example",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "TanStack React Query examples — typed hooks, caching, and mutations.",
   "type": "module",
   "license": "MIT",
@@ -17,7 +17,12 @@
     "data-fetching",
     "typescript",
     "hooks",
-    "caching"
+    "caching",
+    "infinite-query",
+    "pagination",
+    "optimistic-updates",
+    "prefetching",
+    "dependent-queries"
   ],
   "scripts": {
     "build": "tsc",

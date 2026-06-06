@@ -6,6 +6,7 @@ import { QueryProvider } from "./QueryProvider.js";
 import { useTodos } from "./useTodos.js";
 import { useAddTodo } from "./useAddTodo.js";
 import { createFakeTodoApi, type Todo } from "./api.js";
+import { queryKeys } from "./queryKeys.js";
 
 /** Build a wrapper with a fresh QueryClient (retries off) and a fake API. */
 function makeWrapper(seed?: Todo[]) {
@@ -15,7 +16,7 @@ function makeWrapper(seed?: Todo[]) {
       mutations: { retry: false },
     },
   });
-  const api = createFakeTodoApi(seed);
+  const api = createFakeTodoApi({ seed });
 
   function Wrapper({ children }: { children: ReactNode }) {
     return (
@@ -91,9 +92,10 @@ describe("useAddTodo", () => {
     const { result } = renderHook(() => useAddTodo(), { wrapper: Wrapper });
 
     // Prime the cache so we can observe invalidation flip it to stale.
-    queryClient.setQueryData(["todos"], []);
+    const listKey = queryKeys.todos.list();
+    queryClient.setQueryData(listKey, []);
     expect(
-      queryClient.getQueryState(["todos"])?.isInvalidated ?? false,
+      queryClient.getQueryState(listKey)?.isInvalidated ?? false,
     ).toBe(false);
 
     await act(async () => {
@@ -102,7 +104,7 @@ describe("useAddTodo", () => {
 
     await waitFor(() =>
       expect(
-        queryClient.getQueryState(["todos"])?.isInvalidated,
+        queryClient.getQueryState(listKey)?.isInvalidated,
       ).toBe(true),
     );
   });
